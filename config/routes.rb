@@ -1,35 +1,25 @@
 Rails.application.routes.draw do
-  get 'project_tasks/index'
-  get 'project_tasks/show'
-  get 'project_tasks/new'
-  get 'project_tasks/edit'
-  get 'project_tasks/create'
-  get 'project_tasks/update'
-  get 'project_tasks/destroy'
-  get 'tasks/index'
-  get 'tasks/show'
-  get 'tasks/new'
-  get 'tasks/edit'
-  get 'tasks/create'
-  get 'tasks/update'
-  get 'tasks/destroy'
-  get 'projects/index'
-  get 'projects/show'
-  get 'projects/new'
-  get 'projects/edit'
-  get 'projects/create'
-  get 'projects/update'
-  get 'projects/destroy'
+
+  # Homepage
+  root 'welcome#home'
+
+  # Users
+  resources :users
+
+  # Sessions
   get 'sessions/create'
   get 'sessions/login'
   get 'sessions/logout'
-  get 'users/index'
-  get 'users/show'
-  get 'users/new'
-  get 'users/edit'
-  get 'users/create'
-  get 'users/update'
-  get 'users/destroy'
-  root 'welcome#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # Nested Resources - Projects/ProjectTasks
+  resources :projects do
+    resources :project_tasks, except: [:update, :destroy]
+  end
+
+  #Shallow
+  resources :project_tasks, only: [:update, :destroy]
+
+  # Tasks
+  resources :tasks
+
 end
