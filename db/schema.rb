@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_213646) do
+ActiveRecord::Schema.define(version: 2020_07_22_182351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_213646) do
   create_table "project_tasks", force: :cascade do |t|
     t.string "priority", array: true
     t.datetime "due_date"
-    t.boolean "done", default: false
+    t.boolean "done?", default: false
     t.bigint "user_id", null: false
     t.bigint "project_id", null: false
     t.bigint "task_id", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_213646) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin?", default: false
   end
 
   add_foreign_key "project_tasks", "projects"
