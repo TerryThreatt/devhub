@@ -1,4 +1,4 @@
-<% if @user.admin? %>
+
 <% @users.each do |user| %>
 <ul>
     <h2>
@@ -7,5 +7,4 @@
         <li><%=link_to "User Page", user_path(user)%></li>
     </h2>
 </ul>
-<% end %>
 <% end %>

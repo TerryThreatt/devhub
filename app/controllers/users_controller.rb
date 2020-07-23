@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  # Lifecyle Hooks
-  before_action :set_user, only: [:edit, :update, :destroy]
   # Helpers
   helper_method :logged_in?, :current_user
 
@@ -33,23 +31,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def create
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:notice] = "Welcome to DevHub!"
       redirect_to user_path(@user)
     else
+      flash[:err] = "Please try again."
       render :new
     end
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private # This encapsulates these methods
@@ -57,10 +49,6 @@ class UsersController < ApplicationController
   # Strong params - Prevents
   def user_params
     params.require(:user).permit(:username, :email, :password, :admin?)
-  end
-
-  def set_user
-    @user = User.find(params[:id])
   end
 
 end
