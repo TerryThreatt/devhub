@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   # Users
-  resources :users
+  resources :users, except: [:new]
+  get '/signup', to: 'users#new'
 
   # Sessions
-  get 'sessions/create'
-  get 'sessions/login'
-  get 'sessions/logout'
+  get '/login', to: 'sessions/new'
+  post '/login', to: 'sessions/create'
+  delete '/logout', to: 'sessions/destroy'
 
   # Nested Resources - Projects/ProjectTasks
   resources :projects do
