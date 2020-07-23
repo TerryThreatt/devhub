@@ -1,2 +1,22 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Sign Up for DevHub</h1>
+<p><%= button_to "Sign Up with Github", '/auth/github' %></p>
+
+<% if @user.errors.any? %>
+<div class="error_explanation">
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <strong><%= f.label :username %></strong> <%= f.text_field :username %><br>
+  <strong><%= f.label :email %></strong> <%= f.text_field :email %><br>
+  <strong><%= f.label :password %></strong> <%= f.password_field :password %><br>
+  <strong><%= f.label :admin? %></strong> <%= f.check_box :admin? %><br>
+  <%= f.submit "Create my account" %>
+<% end %>
+
+<!-- <p>Already have an Account? <#%= link_to "Log In", login_path %></p> -->
