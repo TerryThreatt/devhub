@@ -1,11 +1,11 @@
 <h1>Login</h1>
 
-<%= form_for(:session, login_path) do |f| %>
+<%= form_with(scope: :session, url: login_path ) do |f| %>
   <strong><%= f.label :email %></strong> <%= f.text_field :email  %><br>
   <strong><%= f.label :password %></strong> <%= f.password_field :password  %><br>
   <%= f.submit "Login" %>
 <% end %>
 
-<p><%= button_to "Login with Github", '/auth/github' %></p>
+<p><%= link_to "Login via Github", "/auth/github" %></p>
 
-<p>New user? <%= link_to "Sign up!", new_user_path %></p>
+<p>Are you a new user? <%= link_to "Sign up!", signup_path %></p>
