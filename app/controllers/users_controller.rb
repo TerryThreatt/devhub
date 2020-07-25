@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  # Helpers
-  helper_method :logged_in?, :current_user
 
   def index
     @users = User.all
@@ -45,7 +43,7 @@ class UsersController < ApplicationController
 
   private # This encapsulates these methods
 
-  # Strong params - Prevents
+  # Strong params
   def user_params
     params.require(:user).permit(:username, :email, :password, :admin?)
   end

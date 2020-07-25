@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   # Homepage
   root 'welcome#home'
 
@@ -16,9 +17,11 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#create'
 
   # Nested Resources - Projects/ProjectTasks
-  resources :projects do
-    resources :project_tasks, except: [:update, :destroy]
-  end
+
+    resources :projects do
+      resources :project_tasks, except: [:update, :destroy]
+    end
+
 
   #Shallow
   resources :project_tasks, only: [:update, :destroy]
