@@ -1,9 +1,9 @@
 <h1>Login</h1>
 
-<%= form_with(scope: :session, url: login_path ) do |f| %>
-  <strong><%= f.label :email %></strong> <%= f.text_field :email  %><br>
-  <strong><%= f.label :password %></strong> <%= f.password_field :password  %><br>
-  <%= f.submit "Login" %>
+<%= form_tag(login_path) do %>
+  Email: <%= text_field_tag 'session[email]'%>
+  Password: <%= password_field_tag 'session[password]'%>
+  <%= submit_tag('Login') %>
 <% end %>
 
 <p><%= link_to "Login via Github", "/auth/github" %></p>
