@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = current_user
-    # @teams = User.find(params[id]).projects.users
   end
 
   def show
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
 
     if logged_in?
       if @user == User.find_by(id: params[:id])
-        render :layout => "application"
+        redirect_to projects_path
       else
         flash[:danger] = "Sorry, You don't have access to this page."
         redirect_to root_path
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome to DevHub!"
-      redirect_to user_path(@user)
+      redirect_to projects_path
     else
       flash[:err] = "Please try again."
       render :new
