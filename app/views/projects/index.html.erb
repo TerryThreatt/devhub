@@ -1,11 +1,2 @@
-<h1>Projects</h1>
-
-<% if @projects.any? %>
-    <ol>
-        <%= @projects.each do |project| %>
-            <li><%= link_to project, project_path(project) %> </li>
-        <% end %>
-    </ol>
-<% end %>
-
-<%= link_to "Create New Project", new_project_path %>
+<h1>Projects#index</h1>
+<p>Find me in app/views/projects/index.html.erb</p>

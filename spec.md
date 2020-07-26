@@ -21,7 +21,7 @@ Specs:
     - project_task.priority || project_task.due_date || project_task.done
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
     - User validates :username, :email, :password, presence: true
-    - Project validates :name, :due_date, presence: true
+    - Team validates :name,  presence: true
     - Task validates :name, presence: true
     - ProjectTask validates :due_date, presence: true
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)

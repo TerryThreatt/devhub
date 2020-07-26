@@ -1,13 +1,2 @@
-Name: <%= @project.name %><br/>
-Description: <%= @project.description%><br/>
-Due: <%= @project.due_date %><br/>
-
-<% if @project.project_tasks.any? %>
-    <ol>
-        <%= @project.project_tasks.each do |pt| %>
-            <%= link_to pt, project_task_path(pt) %>
-    </ol>
-<% end %>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Delete', project_path(@project), method: :delete, data:{ 'Are you sure?' } %>
+<h1>Projects#show</h1>
+<p>Find me in app/views/projects/show.html.erb</p>
