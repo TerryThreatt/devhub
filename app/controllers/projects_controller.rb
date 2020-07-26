@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to root_path, notice: 'Project was successfully destroyed.'
+    redirect_to team_projects_path, notice: 'Project was successfully destroyed.'
   end
 
   private # This encapsulates these methods

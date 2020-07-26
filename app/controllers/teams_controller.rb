@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to teams_url, notice: 'Team was successfully destroyed.'
+    redirect_to root_path, notice: 'Team was successfully destroyed.'
   end
 
   private # This encapsulates these methods
