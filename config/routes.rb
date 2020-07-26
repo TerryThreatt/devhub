@@ -1,31 +1,9 @@
 Rails.application.routes.draw do
-
-  get 'tasks/index'
-  get 'tasks/new'
-  get 'tasks/create'
-  get 'tasks/show'
-  get 'tasks/edit'
-  get 'tasks/update'
-  get 'tasks/destroy'
-  get 'projects/index'
-  get 'projects/new'
-  get 'projects/create'
-  get 'projects/show'
-  get 'projects/edit'
-  get 'projects/update'
-  get 'projects/destroy'
-  get 'teams/index'
-  get 'teams/new'
-  get 'teams/create'
-  get 'teams/show'
-  get 'teams/edit'
-  get 'teams/update'
-  get 'teams/destroy'
-  devise_for :users
   # Homepage
   root 'welcome#home'
 
   # Users
+  devise_for :users
   resources :users, except: [:new]
   get '/signup', to: 'users#new'
 
@@ -39,15 +17,14 @@ Rails.application.routes.draw do
 
   # Nested Resources - Projects/ProjectTasks
 
-    resources :projects do
-      resources :project_tasks, except: [:update, :destroy]
+    resources :teams do
+      resources :projects, except: [:update, :destroy] do
+        resources :tasks, except: [:update, :destroy]
+      end 
     end
 
-
   #Shallow
-  resources :project_tasks, only: [:update, :destroy]
-
-  # Tasks
-  resources :tasks
+  resources :projects, only: [:update, :destroy]
+  resources :tasks, only: [:update, :destroy]
 
 end
