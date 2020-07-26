@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   # Helpers
-  helper_method :logged_in?, :current_user
-  #skip_before_action :verify_authenticity_token, only: :create
+  before_action :authenticate_user!, only: [:destroy]
 
   def new
     if logged_in?

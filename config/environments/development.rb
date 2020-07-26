@@ -39,7 +39,7 @@ Rails.application.configure do
   # Added for Devise - Think about production
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # Print deprecation notices to the Rails logger.
+  # Print deprecation notices to the Rails logger.  
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.

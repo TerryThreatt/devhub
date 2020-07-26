@@ -6,7 +6,7 @@ class Team < ApplicationRecord
   # Validations
   validates :name, presence: true
   # Nested Attributes
-  accepts_nested_attributes_for :user, allow_destroy: true 
+  accepts_nested_attributes_for :users, allow_destroy: true
 
 
 

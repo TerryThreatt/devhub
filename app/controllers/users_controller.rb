@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # Helpers
+  before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @users = User.all
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
 
   # Strong params
   def user_params
-    params.require(:user).permit(:username, :email, :password, :admin?)
+    params.require(:user).permit(:email, :password)
   end
 
 end

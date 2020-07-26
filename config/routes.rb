@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   # Third Party Signup
-  get '/auth/github/callback', to: 'sessions#create', as: :github
+  # get '/auth/github/callback', to: 'sessions#create', as: :github
 
   # Nested Resources - Projects/ProjectTasks
 
     resources :teams do
       resources :projects, except: [:update, :destroy] do
         resources :tasks, except: [:update, :destroy]
-      end 
+      end
     end
 
   #Shallow

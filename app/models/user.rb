@@ -6,5 +6,5 @@ class User < ApplicationRecord
     validates :email, :password, presence: true
     # Devise
     devise  :invitable, :database_authenticatable, :registerable,
-            :recoverable, :rememberable, :validatable, :omniauthable
+            :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
 end

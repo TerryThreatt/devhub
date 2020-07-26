@@ -6,6 +6,6 @@
   <%= submit_tag('Login') %>
 <% end %>
 
-<p><%= link_to "Login via Github", "/auth/github" %></p>
+<p><%= link_to "Login via Github", user_github_omniauth_authorize_path %></p>
 
 <p>Are you a new user? <%= link_to "Sign up!", signup_path %></p>
