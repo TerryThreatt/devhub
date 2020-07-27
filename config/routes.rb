@@ -16,12 +16,12 @@ Rails.application.routes.draw do
 
     resources :teams do
       resources :projects, except: [:update, :destroy] do
-        resources :tasks, except: [:update, :destroy]
+        resources :lists, except: [:update, :destroy]
       end
     end
 
   #Shallow
   resources :projects, only: [:update, :destroy]
-  resources :tasks, only: [:update, :destroy]
+  resources :lists, only: [:update, :destroy]
 
 end

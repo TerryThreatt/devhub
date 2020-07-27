@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if user_signed_in?
       if @user == User.find_by(id: params[:id])
-        render partial: 'welcome/dashboard', note: "Welcome to DevHub!"
+        redirect_to team_projects_path, note: "Welcome to DevHub!"
       else
         redirect_to root_path, danger: "Sorry, You don't have access to this page."
       end
@@ -19,9 +19,7 @@ class UsersController < ApplicationController
 
   def new
     if user_signed_in?
-      @teams = Team.where(id: current_user.id)
-  		@projects = Team.where(id: current_user.id)
-      render partial: 'welcome/dashboard'
+      redirect_to team_projects_path
     else
       @user = User.new
     end
@@ -32,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to projects_path, note: "Welcome to DevHub!"
+      redirect_to team_projects_path, note: "Welcome to DevHub!"
     else
       render :new, err: "Please try again."
     end

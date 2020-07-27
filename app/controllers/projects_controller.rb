@@ -8,12 +8,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = current_user.projects.build
-    @teams = current_user.teams.build
   end
 
   def create
-    @project = current_user.projects.build(project_params)
+    @project = current_user.projects.new(project_params)
+    @project.user_id = current_user.id
 
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'

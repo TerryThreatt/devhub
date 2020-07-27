@@ -8,12 +8,11 @@ class TeamsController < ApplicationController
   end
 
   def new
-    @team = current_user.teams.build
-    @user = current_user
   end
 
   def create
-    @team = current_user.teams.build(team_params)
+    @team = current_user.teams.new(team_params)
+    @team.user_id = current_user.id
 
     if @team.save
       redirect_to root_path, notice: 'Team was successfully created.'
