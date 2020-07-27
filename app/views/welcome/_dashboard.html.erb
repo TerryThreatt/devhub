@@ -1,0 +1,59 @@
+<section class="section pt3">
+	<p class="border-bottom pb3 has-text-centered">Welcome <%= current_user.email%></p>
+	<div class="columns">
+
+		<div class="column border-right pt4">
+			<div class="level">
+				<div class="level-left">
+					<h3 class="subtitle">Projects <span class="tag"><%= @projects.count %></span></h3>
+				</div>
+				<div class="level-right">
+					<p class="field">
+						<%= link_to new_team_project_path(@projects), class: 'btn btn-primary' do %>
+							<span class="icon is-small has-text-link">Add Project<i class="fa fa-plus"></i></span>
+						<% end %>
+					</p>
+				</div>
+			</div>
+			<hr />
+			<% @projects.each do |project| %>
+				<div class="content border-bottom pb4">
+					<p class="title is-4">
+						<%= link_to project.name, project %>
+					</p>
+					<p class="subtitle is-6">
+						<%= link_to project.team.name, project.team %>
+					</p>
+					<p class="f6">Created by: <%= project.user.email %></p>
+				</div>
+			<% end %>
+
+		</div>
+		<div class="column border-right ph4">
+			<div class="level">
+				<div class="level-left">
+					<h3 class="subtitle is-5">Teams <span class="tag is-rounded"><%= @teams.count %></span></h3>
+				</div>
+				<div class="level-right">
+					<p class="field">
+						<%= link_to new_team_path, class: 'btn btn-primary' do %>
+							<span class="icon is-small has-text-link">Add Team<i class="fa fa-plus"></i></span>
+						<% end %>
+					</p>
+				</div>
+			</div>
+			<hr />
+			<% @teams.each do |team| %>
+				<div class="content border-bottom pb4">
+					<p class="title is-4">
+						<%= link_to team.name, team %>
+					</p>
+					<p class="subtitle is-6"><%= current_user.team.users.count %> Members</p>
+					<span class="f6"><%= safe_join(team.users.map { |user| user.email }, ', ') %></span>
+				</div>
+			<% end %>
+
+		</div>
+
+	</div>
+</section>
