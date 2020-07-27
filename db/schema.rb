@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_052213) do
+ActiveRecord::Schema.define(version: 2020_07_27_170632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2020_07_26_052213) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "priority", default: [], array: true
     t.date "due_date"
     t.boolean "done?", default: false
     t.bigint "user_id", null: false
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_07_26_052213) do
     t.integer "invitations_count", default: 0
     t.string "provider"
     t.string "uid"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

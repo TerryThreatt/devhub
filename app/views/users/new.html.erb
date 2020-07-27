@@ -16,6 +16,8 @@
 
 <!-- User Signup -->
 <%= form_for @user, url: new_user_registration_path do |f| %>
+  <strong><%= f.label :username %></strong> <%= f.text_field :username %><br>
+  <strong><%= f.label :password %></strong> <%= f.password_field :password %><br>
   <strong><%= f.label :email %></strong> <%= f.text_field :email %><br>
   <strong><%= f.label :password %></strong> <%= f.password_field :password %><br>
   <strong><%= f.label :admin? %></strong> <%= f.check_box :admin? %><br>

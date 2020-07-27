@@ -8,7 +8,7 @@
 
 
 # initial user
-User.create(email: 'terry.threatt@gmail.com', password: 'password', admin?: true)
+User.create(username: 'terrythreatt', email: 'terry.threatt@gmail.com', password: 'password', admin?: true)
 
 # sample tasks
 Task.create(name: 'Spec')

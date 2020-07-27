@@ -12,10 +12,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # Third Party Signup
-  # get '/auth/github/callback', to: 'sessions#create', as: :github
-
-  # Nested Resources - Projects/ProjectTasks
+  # Nested Resources - teams/projects
 
     resources :teams do
       resources :projects, except: [:update, :destroy] do
