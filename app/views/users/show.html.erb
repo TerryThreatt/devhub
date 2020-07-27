@@ -1,3 +1,6 @@
-<h1><%= @user %></h1>
-    <%= link_to 'Home', root_path %>
+<% content_for :header do %>
+  <h1>User: </h1>
 <% end %>
+
+    <strong>Email:</strong> <%= @user.email %><br>
+

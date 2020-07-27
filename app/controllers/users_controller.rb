@@ -1,19 +1,14 @@
 class UsersController < ApplicationController
   # Helpers
-  before_action :set_team, only: [:show ]
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_user, only: [:show ]
+  before_action :authenticate_user!, only: [:show]
 
-  def index
-    @users = User.all
-    @user = current_user
-  end
 
   def show
-    @user = current_user
 
-    if logged_in?
+    if user_signed_in?
       if @user == User.find_by(id: params[:id])
-        redirect_to projects_path, note: "Welcome to DevHub!"
+        render partial: 'welcome/dashboard', note: "Welcome to DevHub!"
       else
         redirect_to root_path, danger: "Sorry, You don't have access to this page."
       end
@@ -23,8 +18,10 @@ class UsersController < ApplicationController
   end
 
   def new
-    if logged_in?
-      redirect_to projects_path
+    if user_signed_in?
+      @teams = Team.where(id: current_user.id)
+  		@projects = Team.where(id: current_user.id)
+      render partial: 'welcome/dashboard'
     else
       @user = User.new
     end

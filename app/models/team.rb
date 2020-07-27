@@ -8,6 +8,4 @@ class Team < ApplicationRecord
   # Nested Attributes
   accepts_nested_attributes_for :users, allow_destroy: true
 
-
-
 end

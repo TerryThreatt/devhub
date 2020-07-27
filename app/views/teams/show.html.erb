@@ -1,2 +1,17 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<% content_for :header do %>
+  <h1><%= @team.name %></h1>
+  <p><em><%= @team.description %></em></p>
+<% end %>
+
+<% if Team.any? %>
+<% content_for :content do %>
+  <% Project.users.each do |user| %>
+      <div class="card mb-3">
+        <h5 class="card-header"><%= link_to 'Add Team Member', new_user_invitation_path %></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">User: <%= user.email %></li>
+        </ul>
+      </div>
+  <% end %>
+<% end %>
+<% end %>

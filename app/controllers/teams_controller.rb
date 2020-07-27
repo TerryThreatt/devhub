@@ -10,11 +10,11 @@ class TeamsController < ApplicationController
   def new
     @team = current_user.teams.build
     @user = current_user
+    # @team_members = current_user.projects.build_users
   end
 
   def create
     @team = current_user.teams.build(team_params)
-    @team.users << current_user
 
     if @team.save
       redirect_to root_path, notice: 'Team was successfully created.'
