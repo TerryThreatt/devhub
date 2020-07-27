@@ -9,5 +9,5 @@ class Task < ApplicationRecord
             :inclusion => { :in => %w(low medium high),
             :message => "%{priority} is not selected" }
   # Nested Attributes
-  accept_nested_attributes_for :team, :user, :project 
+  accepts_nested_attributes_for :team, :user, :project
 end

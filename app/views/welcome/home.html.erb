@@ -1,5 +1,5 @@
-<h1>Welcome to DevHub</h1>
-<p>Your one-stop place for project management for development teams.</p>
-
-<%= link_to 'Signup', signup_path %>
-<%= link_to 'Login', login_path %>
+<% if user_signed_in? %>
+	<%= render 'new' %>
+	<% else %>
+	<%= render 'new' %>
+<% end %>

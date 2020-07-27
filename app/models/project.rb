@@ -7,6 +7,6 @@ class Project < ApplicationRecord
   # Validations
   validates :name, :due_date, presence: true
   # Nested Attributes
-  accept_nested_attributes_for :team, :user
+  accepts_nested_attributes_for :team, :user
 
 end
