@@ -4,7 +4,7 @@
           <%= link_to 'DevHub', root_path, class: 'navbar-brand' %>
         </div>
         <% if user_signed_in? %>
-              <%= link_to 'Projects', team_projects %>
+              <%= link_to 'Projects', team_projects_path(current_user) %>
           <% end %>
         <div id="navbar">
 

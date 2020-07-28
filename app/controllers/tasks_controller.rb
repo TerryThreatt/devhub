@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class TasksController < ApplicationController
   # Helpers
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
   end
+  
 
   def new
   end

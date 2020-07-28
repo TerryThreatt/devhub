@@ -1,7 +1,8 @@
 class User < ApplicationRecord
     # Associations
-    has_many :teams
-    has_many :projects, through: :teams
+    has_many :projects
+    has_many :project_tasks
+    has_many :tasks, through: :project_tasks
     # Validations
     validates :username, :email, :password, presence: true
     validates :email, uniqueness: true

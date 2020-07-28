@@ -1,10 +1,9 @@
 class Task < ApplicationRecord
   # Associations
-  belongs_to :user
-  belongs_to :team
-  belongs_to :project
+  has_many :projects_tasks, dependent: :destroy
+  has_many :projects, through: :projects_tasks
+  has_many :users, through: :projects_tasks
   # Validations
-  validates :name, :due_date, presence: true
-  # Nested Attributes
-  accepts_nested_attributes_for :team, :user, :project
+  validates :name, presence: true
+
 end

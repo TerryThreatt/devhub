@@ -15,13 +15,9 @@ Rails.application.routes.draw do
   # Nested Resources - teams/projects
 
     resources :teams do
-      resources :projects, except: [:update, :destroy] do
-        resources :lists, except: [:update, :destroy]
-      end
+      resources :projects
+      resources :lists
     end
 
-  #Shallow
-  resources :projects, only: [:update, :destroy]
-  resources :lists, only: [:update, :destroy]
 
 end

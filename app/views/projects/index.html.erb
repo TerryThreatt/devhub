@@ -1,2 +1,11 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<h1><%= @user.username %>Projects</h1>
+
+<% content_for :content %>
+    <% if @projects.any? %>
+        <% @projects.each do |project| %>
+            <p>Name:<%= link_to project.name, project_path(project) %><p>
+            <p>Description:<%= link_to project.description, project_path(project) %><p>
+        <% end %>
+    <% end %>
+
+<%= link_to 'Create New Project', new_team_project_path %>

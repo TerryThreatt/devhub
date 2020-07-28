@@ -1,4 +1,4 @@
-class ListsController < ApplicationController
+class ProjectTasksController < ApplicationController
   # Helpers
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]

@@ -4,10 +4,13 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
+    @user = current_user
   end
 
   def new
+    @project = current_user.projects.build
+    
   end
 
   def create
