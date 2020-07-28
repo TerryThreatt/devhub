@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Homepage
   root 'welcome#home'
 
@@ -12,12 +13,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # Nested Resources - teams/projects
+  # Nested Resources - projects/project_tasks
+  resources :projects do
+    resources :project_tasks
+  end
 
-    resources :teams do
-      resources :projects
-      resources :lists
-    end
+  # Task
+  resources :tasks
 
 
 end
