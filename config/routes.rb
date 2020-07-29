@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   # Users
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :users, except: [:new]
-  get '/signup', to: 'users#new'
+  devise_for :users
+  # resources :users, except: [:new]
+  # get '/signup', to: 'users#new'
 
   # Sessions
   get '/login', to: 'sessions#new'

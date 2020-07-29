@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
   def new
     if logged_in?
       redirect_to projects_path
+    else
+      redirect_to new_user_session
     end
   end
 
@@ -12,12 +14,12 @@ class SessionsController < ApplicationController
     if auth_hash = request.env['omniauth.auth']
       # Logged in via OAuth
       user = User.find_or_create_by_omniauth(auth_hash)
-      session[:user_id] = user.id
+      user_session
       redirect_to projects_path
     else
       user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
+          user_session
           redirect_to projects_path
         else
           flash[:danger] = "Please Try again!"
@@ -29,8 +31,8 @@ class SessionsController < ApplicationController
 
   def destroy
     if logged_in?
-      session.clear
-      redirect_to '/'
+      destroy_user_session
+      redirect_to root_path
     else
       redirect_to root_path
     end
