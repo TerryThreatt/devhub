@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   # Users
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :users, except: [:new]
   get '/signup', to: 'users#new'
 
@@ -20,6 +20,5 @@ Rails.application.routes.draw do
 
   # Task
   resources :tasks
-
 
 end

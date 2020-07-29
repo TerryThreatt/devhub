@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def new
     if user_signed_in?
-      redirect_to team_projects_path
+      redirect_to projects_path
     else
       @user = User.new
     end
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      user_session
       redirect_to team_projects_path, note: "Welcome to DevHub!"
     else
       render :new, err: "Please try again."

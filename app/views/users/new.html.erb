@@ -15,8 +15,7 @@
 <% end %>
 
 <!-- User Signup -->
-<%= form_for @user, url: new_user_registration_path do |f| %>
-  <strong><%= f.label :username %></strong> <%= f.text_field :username %><br>
+<%= form_for @user do |f| %>
   <strong><%= f.label :password %></strong> <%= f.password_field :password %><br>
   <strong><%= f.label :email %></strong> <%= f.text_field :email %><br>
   <strong><%= f.label :password %></strong> <%= f.password_field :password %><br>
@@ -26,6 +25,6 @@
 
 <!-- Third Party Signup -->
 <p><%= link_to "Sign Up via Github", user_github_omniauth_authorize_path %></p>
-
+<br>
 <p>Already have an Account? <%= link_to "Log In", user_session_path %></p>
 <% end %>

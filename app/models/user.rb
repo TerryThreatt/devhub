@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :project_tasks
     has_many :tasks, through: :project_tasks
     # Validations
-    validates :username, :email, :password, presence: true
+    validates :email, :password, presence: true
     validates :email, uniqueness: true
     # Devise
     devise  :invitable, :database_authenticatable, :registerable,
