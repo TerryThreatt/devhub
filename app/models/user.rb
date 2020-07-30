@@ -9,5 +9,5 @@ class User < ApplicationRecord
     # Devise
     devise  :invitable, :database_authenticatable, :registerable,
             :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
-
+    
 end

@@ -1,8 +1,8 @@
-<% content_for :header %>
+<% content_for :header do %>
   <h1>Sign Up for DevHub</h1>
 <% end %>
 
-<% content_for :content %>
+<% content_for :content  do %>
 <!-- Error Catching -->
 <% if @user.errors.any? %>
 <div class="error_explanation">
@@ -23,8 +23,9 @@
   <%= f.submit "Create my account" %>
 <% end %>
 
-<!-- Third Party Signup -->
-<p><%= link_to "Sign Up via Github", user_github_omniauth_authorize_path %></p>
-<br>
+
 <p>Already have an Account? <%= link_to "Log In", user_session_path %></p>
+<br>
+<!-- Third Party Signup -->
+<p><%= link_to "Sign In via Github", user_github_omniauth_authorize_path %></p>
 <% end %>

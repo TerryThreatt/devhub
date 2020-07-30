@@ -23,7 +23,7 @@ $ rails server
 ```
 
 # Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/terrythreatt/devhub.
+Bug reports and pull requests are welcome on GitHub at https://github.com/terrythreatt/devhub .
 
 # Additional Information
 

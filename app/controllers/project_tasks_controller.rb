@@ -1,21 +1,23 @@
 class ProjectTasksController < ApplicationController
   # Helpers
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_project_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    @lists = List.all
+    @project_tasks = ProjectTask.all
   end
 
   def new
+    @task = current_user.project_tasks.build
+    @user = current_user
   end
 
   def create
-    @list = current_user.lists.new(task_params)
-    @list.user_id = current_user.id
+    @project_task = current_user.project_task.build(project_task_params)
+    @project_task.user_id = current_user.id
 
-    if @list.save
-      redirect_to @list, notice: 'List was successfully created.'
+    if @project_task.save
+      redirect_to @project_task, notice: 'Project Task was successfully created.'
     else
       render :new
     end
@@ -25,27 +27,26 @@ class ProjectTasksController < ApplicationController
   end
 
   def edit
-    @projects = current_user.projects
   end
 
   def update
-    if @list.update(list_params)
-      redirect_to @list, notice: 'List was successfully updated.'
+    if @project_task.update(project_task_params)
+      redirect_to @project_task, notice: 'Project Task was successfully updated.'
    else
       render :edit
    end
   end
 
   def destroy
-    @list.destroy
-    redirect_to team_project_list_path, notice: 'Task was successfully destroyed.'
+    @project_task.destroy
+    redirect_to team_project_list_path, notice: 'Project Task was successfully destroyed.'
   end
 
   private # This encapsulates these methods
 
   # Strong params
-    def set_list
-      @list = List.find(params[:id])
+    def set_project_task
+      @project_task = ProjectTask.find(params[:id])
     end
 
     def project_task_params
