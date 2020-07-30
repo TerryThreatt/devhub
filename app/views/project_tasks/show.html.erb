@@ -1,2 +1,13 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<% content_for :header do %>
+  <h1><%= @project_task.name %></h1>
+  <p><em><%= @project_task.description %></em></p>
+  <p><em><%= @project_task.due_date %></em></p>
+  <p><em><%= @project_task.done? %></em></p>
+<% end %>
+
+<% content_for :content do %>
+  <%= link_to 'Add Project Task', new_project_project_task_path(@project_task) %>
+  <%= link_to 'Edit Project Task', edit_project_project_task_path(@project_task) %>
+  <%= link_to 'Create New Project', new_project_path %>
+  <%= link_to 'Back', project_project_tasks_path %>
+<% end %>
