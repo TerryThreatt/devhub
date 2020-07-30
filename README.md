@@ -1,24 +1,36 @@
-# README
+# DevHub
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ The application helps you keep track of tasks for projects. It will allow a user to be selected for each task and coordination completion of important projects.
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+To get started with the app, clone the repo and then install the needed gems:
 
-* System dependencies
+```
+$ bundle install
+```
 
-* Configuration
+Next, migrate the database:
 
-* Database creation
+```
+$ rake db:migrate
+```
 
-* Database initialization
+Then run the app in a local server:
 
-* How to run the test suite
+```
+$ rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/terrythreatt/devhub.
 
-* Deployment instructions
+# Additional Information
 
-* ...
+For more information, see the
+[Rails Assessment Lesson for Flatiron](https://github.com/learn-co-students/rails-assessment-v-000).
+
+## License
+
+All source code in the is available jointly under the MIT License. See
+[LICENSE.md](LICENSE.md) for details.
