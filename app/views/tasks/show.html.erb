@@ -1,17 +1,11 @@
 <% content_for :header do %>
-  <h1><%= @team.name %></h1>
-  <p><em><%= @team.description %></em></p>
+  <h1><%= @task.name %></h1>
+  <p><em><%= @task.description %></em></p>
 <% end %>
 
-<% if Team.any? %>
 <% content_for :content do %>
-  <% Team.all.user.each do |user| %>
-      <div class="card mb-3">
-        <h5 class="card-header"><%= link_to 'Add Team Member', new_user_invitation_path %></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">User: <%= user.username %></li>
-        </ul>
-      </div>
-  <% end %>
-<% end %>
+  <%= link_to 'Add Task', new_task_path(@task) %>
+  <%= link_to 'Edit Task', edit_task_path(@task) %>
+  <%= link_to 'Create New Project', new_project_path %>
+  <%= link_to 'Back', tasks_path %>
 <% end %>

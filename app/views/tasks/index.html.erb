@@ -1,17 +1,17 @@
 <% content_for :header do %>
-  <h1><%= current_user.email %> </h1>
-  <h3>Teams:</h3>
+  <h1><%= @user.email %> </h1>
+  <h3>Tasks:</h3>
 <% end %>
 
 <% content_for :content do %>
-  <% if @teams.count == 0 %>
-    <p><%= link_to "Create Team", new_team_path(current_user) %></p>
+  <% if !@tasks.any? %>
+    <p><%= link_to "Create Task", new_task_path(@user) %></p>
   <% else %>
-    <% @teams.each do |team| %>
+    <% @tasks.each do |task| %>
       <div class="card border-info mb-3">
         <div class="card-body">
-          Team:<h5 class="card-title"><%= link_to team.name, team_path(team) %></h5>
-          Description:<p class="card-text"><%= team.description %></p>
+          Name:<h5 class="card-title"><%= link_to task.name, project_path(task) %></h5>
+          Description:<p class="card-text"><%= task.description %></p>
         </div>
       </div>
     <% end %>

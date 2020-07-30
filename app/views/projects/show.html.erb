@@ -1,9 +1,12 @@
-<% content_for :content %>
-
+<% content_for :header do %>
 <h1><%= @project.name %></h1>
 <p><%= @project.description %></p>
 <strong><%= @project.due_date %></strong>
+<% end %>
 
-<%= link_to 'Edit Project', edit_project_path(@project) %>
-<%= link_to 'Create New Project', new_project_path %>
-<%= link_to 'Back', projects_path %>
+<% content_for :content do %>
+    <%= link_to 'Add Task', new_project_project_task_path(@project) %>
+    <%= link_to 'Edit Project', edit_project_path(@project) %>
+    <%= link_to 'Create New Project', new_project_path %>
+    <%= link_to 'Back', projects_path %>
+<% end %>

@@ -1,13 +1,12 @@
-<% if team.errors.any? %>
+<% if task.errors.any? %>
   <ul>
-      <% team.errors.full_messages.each do |msg| %>
+      <% task.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
   </ul>
 <% end %>
 
-<%= form_for team do |f| %>
-
+<%= form_for :task do |f| %>
     <strong><%= f.label :name %></strong>
     <%= f.text_field :name, class:"form-control" %><br>
     <strong><%= f.label :description %></strong>

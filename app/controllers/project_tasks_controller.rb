@@ -48,7 +48,7 @@ class ProjectTasksController < ApplicationController
       @list = List.find(params[:id])
     end
 
-    def list_params
-      params.require(:list).permit(:name, :description, :due_date, , :user_id, :team_id, :project_id)
+    def project_task_params
+      params.require(:project_task).permit(:name, :description, :due_date, :user_id, :task_id, :project_id)
     end
 end

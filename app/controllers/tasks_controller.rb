@@ -1,22 +1,23 @@
 class TasksController < ApplicationController
   # Helpers
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    @teams = Team.all
+    @task = Task.all
   end
-  
+
 
   def new
+    @task = Task.new
+    @user = current_user
   end
 
   def create
-    @team = current_user.teams.new(team_params)
-    @team.user_id = current_user.id
+    @task = current_user.tasks.new(task_params)
 
-    if @team.save
-      redirect_to root_path, notice: 'Team was successfully created.'
+    if @task.save
+      redirect_to task_path, notice: 'Task was successfully created.'
     else
       render :new
     end
@@ -30,26 +31,27 @@ class TasksController < ApplicationController
 
   def update
 
-    if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+    if @task.update(task_params)
+      redirect_to @task, notice: 'Team was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @team.destroy
-    redirect_to root_path, notice: 'Team was successfully destroyed.'
+    @project = current_user.projects.find_by(project_id = current_user.id)
+    @task.destroy
+    redirect_to project_path(@project), notice: 'Task was successfully destroyed.'
   end
 
   private # This encapsulates these methods
 
   # Strong params
-    def set_team
-      @team = Team.find(params[:id])
+    def set_task
+      @task = Task.find(params[:id])
     end
 
-    def team_params
-      params.require(:team).permit(:name, :description,  users_attributes: [:id, :name, :email, :_destroy])
+    def task_params
+      params.require(:task).permit(:name, :description)
     end
 end
