@@ -1,2 +1,7 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
+<% content_for :header do %>
+  <h1>Create a Project Task </h1>
+<% end %>
+
+<% content_for :content do %>
+  <%= render partial: "form", locals: {project_task: @project_task} %>
+<% end %>
