@@ -3,5 +3,12 @@
 <% end %>
 
 <% content_for :content do %>
+  <% if @task.errors.any? %>
+    <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+    </ul>
+  <% end %>
   <%= render partial: "form", locals: {task: @task } %>
 <% end %>

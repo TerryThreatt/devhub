@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    @task = Task.all
+    @tasks = Task.all
   end
 
 

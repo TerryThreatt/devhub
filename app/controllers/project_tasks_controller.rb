@@ -5,14 +5,17 @@ class ProjectTasksController < ApplicationController
 
   def index
     @project_tasks = ProjectTask.all
+    @user = current_user
   end
 
   def new
-    @project_task = current_user.project_tasks.build
+    @project_task = ProjectTask.new
+    @project = Project.find_by(id: params[:project_id])
+    @project_task.build_task
   end
 
   def create
-    @project_task = current_user.project_task.build(project_task_params)
+    @project_task = ProjectTask.new(project_task_params)
 
     if @project_task.save
       redirect_to @project_task, notice: 'Project Task was successfully created.'
@@ -48,6 +51,6 @@ class ProjectTasksController < ApplicationController
     end
 
     def project_task_params
-      params.require(:project_task).permit(:name, :description, :due_date, tasks_attributes: [:id, :name], users_attributes: [:id, :email ] )
+      params.require(:project_task).permit(:name, :description, :due_date, user_attributes: [:id, :email ], task_attributes: [:id, :name, :description], project_attributes: [:id, :name ] )
     end
 end

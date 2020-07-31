@@ -12,10 +12,12 @@
                 <div class="card-body">
                     Name:<H5 class="card-title"><%= link_to project.name, project_path(project) %></H5>
                     Description:<p class="card-text"><%= project.description %><p>
-                    <strong><%= project.due_date %></strong>
+                    Due Date:<strong><%= project.due_date %></strong><br>
                     <%= link_to 'Create Task', new_project_project_task_path(project) %>
                 </div>
             </div>
         <% end %>
     <% end %>
+
+    <p><%= link_to "Create New Project", new_project_path %></p>
 <% end %>

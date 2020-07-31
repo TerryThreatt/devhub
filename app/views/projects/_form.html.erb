@@ -1,11 +1,3 @@
-<% if project.errors.any? %>
-  <ul>
-      <% @roject.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-  </ul>
-<% end %>
-
 <%= form_for :project do |f| %>
     <div>
     <strong><%= f.label :name %></strong>
