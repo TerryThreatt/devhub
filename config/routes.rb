@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   # Devise
-  devise_for :users
-  # Third Party
-  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # Nested Resources - users/projects
   resources :users, only: [:show] do
