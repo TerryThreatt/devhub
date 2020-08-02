@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
+
   # Homepage
   root 'welcome#home'
 
-  # Sessions
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-
   # Devise
-  devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
+  devise_for :users
+  # Third Party
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 
   # Nested Resources - users/projects
-  resources :users do
+  resources :users, only: [:show] do
     resources :projects
   end
 

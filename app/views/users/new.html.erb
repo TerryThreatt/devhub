@@ -24,8 +24,8 @@
 <% end %>
 
 
-<p>Already have an Account? <%= link_to "Log In", user_session_path %></p>
+<p>Already have an Account? <%= link_to "Log In", new_user_session_path %></p>
 <br>
 <!-- Third Party Signup -->
-<p><%= link_to "Sign In via Github", user_github_omniauth_callback_path %></p>
+<p><%= link_to "Sign In via Github", auth_google_oauth2_callback_path %></p>
 <% end %>

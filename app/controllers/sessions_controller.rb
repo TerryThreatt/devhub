@@ -36,5 +36,24 @@ class SessionsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
 
-end
+  def omniauth
+    @user = User.create_by_google_omniauth(auth)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      redirect_to root_path
+    end
+
+  end
+
+  private
+  def auth
+    request.env['omniauth.auth']
+  end
+
+  def session_params
+    params.require(:session).permit(:email, :password)
+  end

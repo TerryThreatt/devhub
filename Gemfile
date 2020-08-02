@@ -24,13 +24,13 @@ gem 'bcrypt', '~> 3.1.7'
 # third party authentication
 gem 'omniauth'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-google-oauth2'
 # Key protection
 gem 'dotenv-rails'
 # Authorization
 gem 'cancancan'
 # Authentication & Invitations
 gem 'devise'
-gem 'devise_invitable', '~> 2.0.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -61,4 +61,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
