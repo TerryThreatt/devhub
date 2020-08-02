@@ -47,7 +47,7 @@ class ProjectTasksController < ApplicationController
 
   # Strong params
     def set_project_task
-      @project_task = ProjectTask.find(params[:id])
+      @project_task = ProjectTask.find_by(id: params[:id])
     end
 
     def project_task_params

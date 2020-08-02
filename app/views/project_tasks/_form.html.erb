@@ -6,7 +6,7 @@
     <strong><%= f.label :due_date %></strong>
     <%= f.date_field :due_date, class:"form-control" %><br>
     <strong><%= f.label "Select User:" %></strong>
-    <%= f.collection_select(:id, User.all, :id, :email, prompt: true)%>
+    <%= f.collection_select(:id, User.all, :id, :email, prompt: true) %>
     <br>
     <%= f.fields_for :task do |t| %>
         <strong><%= t.label "Select Task:" %></strong>
