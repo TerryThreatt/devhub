@@ -7,9 +7,16 @@ class ProjectTask < ApplicationRecord
   validates :name, :due_date, presence: true
 
   # Scope
-  scope :done, -> {
-    where(:done? => true)
-  }
+  scope :asc, -> { order(create_at: :asc ) }
+  scope :desc, -> { order(create_at: :desc ) }
+
+  def self.done_count
+      self.where(done?: 'true').count
+  end
+
+  def self.done_group
+      self.group(done?: 'true')
+  end
 
   def project_attributes=(project_params)
     project_params.values.each do |project_attrs|
@@ -35,4 +42,4 @@ class ProjectTask < ApplicationRecord
       end
     end
   end
-end 
+end

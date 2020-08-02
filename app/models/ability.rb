@@ -5,12 +5,13 @@ class Ability
 
   def initialize(user)
 
-      user ||= User.new # guest user (not logged in)
+      user ||= User.new
       if user.admin?
         can :manage, :all
       else
         can :read, :all
-        can [:create, :update, :delete], [Project, ProjectTask, Task], user_id: user.id
+        can :manage, :all
+        # can [:create, :update, :delete], [Project, ProjectTask, Task], user_id: user.id
       end
 
     # Define abilities for the passed in user here. For example:

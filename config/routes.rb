@@ -17,6 +17,4 @@ Rails.application.routes.draw do
   # Task
   resources :tasks
 
-  # Scope
-  get :done, to: 'project_tasks#done'
 end

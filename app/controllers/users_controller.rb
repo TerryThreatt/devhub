@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
 
   def show
-
     if user_signed_in?
       if @user == User.find_by(id: params[:id])
         redirect_to projects_path, note: "Welcome to DevHub!"

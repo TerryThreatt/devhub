@@ -24,6 +24,7 @@ Specs:
     - Project validates :name, :due_date, presence: true
     - ProjectTask validates :name, :due_date, presence: true
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+    - ProjectTask.asc || ProjectTask.desc || ProjectTask.done_count
 - [x] Include signup (how e.g. Devise)
     - Devise
 - [x] Include login (how e.g. Devise)
@@ -31,7 +32,7 @@ Specs:
 - [x] Include logout (how e.g. Devise)
     - Devise
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
-    - omni-auth-github
+    - omniauth-google-oauth2'
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)

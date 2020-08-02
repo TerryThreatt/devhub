@@ -4,17 +4,17 @@
 <% end %>
 
 <% content_for :content do %>
-
-    <% @projects.each do |project| %>
-        <div class="card border-info mb-3">
-            <div class="card-body">
-                Name:<H5 class="card-title"><%= link_to project.name, user_project_path(project) %></H5>
-                Description:<p class="card-text"><%= project.description %><p>
-                Due Date:<strong><%= project.due_date %></strong><br>
-                <%= link_to 'Create Task', new_project_task_path(project) %>
+        <% @projects.each do |project| unless @projects.nil? %>
+            <div class="card border-info mb-3">
+                <div class="card-body">
+                    Name:<H5 class="card-title"><%= link_to project.name, user_project_path(project)</H5> %>
+                    Description:<p class="card-text"><%= project.description %><p>
+                    Due Date:<strong><%= project.due_date unless project.due_date.nil? %></strong><br>
+                    <%= link_to 'Create Task', new_project_task_path(project) %>
+                </div>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+<% end %>
 
     <br>
     <br>
