@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     @user = current_user
   end
 
@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
 
   # Strong params
     def set_project
-      @project = Project.find(params[:id])
+      @project = Project.find_by(id: params[:id])
     end
 
     def project_params

@@ -5,19 +5,16 @@ class UsersController < ApplicationController
 
   def show
     if user_signed_in?
-      if @user == User.find_by(id: params[:id])
-        redirect_to projects_path, note: "Welcome to DevHub!"
-      else
-        redirect_to root_path, danger: "Sorry, You don't have access to this page."
-      end
+      redirect_to @user, note: "Welcome to DevHub!"
     else
-      redirect_to new_user_session, err: "Please login."
+      redirect_to root_path, danger: "Sorry, You don't have access to this page."
     end
   end
 
+
   def new
     if user_signed_in?
-      redirect_to projects_path
+      redirect_to user_projects_path
     else
       @user = User.new
     end
@@ -28,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       user_session
-      redirect_to projects_path, note: "Welcome to DevHub!"
+      redirect_to user_projects_path, note: "Welcome to DevHub!"
     else
       render :new, err: "Please try again."
     end
@@ -42,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:id, :email, :password, :admin?, :provider, :uid, :user_id)
   end
 
 end

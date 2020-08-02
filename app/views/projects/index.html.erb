@@ -7,15 +7,14 @@
         <% @projects.each do |project| unless @projects.nil? %>
             <div class="card border-info mb-3">
                 <div class="card-body">
-                    Name:<H5 class="card-title"><%= link_to project.name, user_project_path(project)</H5> %>
+                    Name:<h5 class="card-title"><%= link_to project.name, user_project_path(@user, project) %></h5>
                     Description:<p class="card-text"><%= project.description %><p>
-                    Due Date:<strong><%= project.due_date unless project.due_date.nil? %></strong><br>
-                    <%= link_to 'Create Task', new_project_task_path(project) %>
+                    Due Date:<h5 class="card-text"><%= project.due_date %></h5>
+                    <%= link_to 'Create Task', new_project_task_path(@user, project) %>
                 </div>
             </div>
         <% end %>
 <% end %>
-
     <br>
     <br>
     <p><%= link_to "Create New Project", new_user_project_path %></p>
