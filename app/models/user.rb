@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
     # Associations
     has_many :projects
     has_many :project_tasks
@@ -8,6 +12,15 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     # Devise
     devise  :invitable, :database_authenticatable, :registerable,
-            :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
-    
+            :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:github]
+
+    def self.create_from_provider_data(provider_data)
+        where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
+            user.provider = provider_data.provider
+            user.uid = provider_data.uid
+            user.email = (provider_data.info.email.nil?) ? "#{provider_data.uid}@email.com" : provider_data.info.email
+            user.password = Devise.friendly_token[0, 20]
+        end
+    end
+
 end

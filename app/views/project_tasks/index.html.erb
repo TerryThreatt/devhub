@@ -5,7 +5,7 @@
 
 <% content_for :content do %>
     <% if !@project_tasks.any? %>
-        <p><%= link_to "Create New Project Task", new_project_project_task_path(@user) %></p>
+        <p><%= link_to "Create New Project Task", new_project_task_path(@user) %></p>
     <% else %>
         <% @project_tasks.each do |project_task| %>
             <div class="card border-info mb-3">

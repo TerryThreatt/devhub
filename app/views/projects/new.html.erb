@@ -10,5 +10,8 @@
         <% end %>
     </ul>
   <% end %>
-  <%= render partial: "form", locals: {project: @project} %>
+
+  <%= form_for @project do |form| %>
+    <%= render partial: "form", locals: {f: form} %>
+  <% end %>
 <% end %>

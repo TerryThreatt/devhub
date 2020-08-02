@@ -9,12 +9,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = current_user.projects.build
-
+    @project = Project.new
   end
 
   def create
-    @project = current_user.projects.new(project_params)
+    @project = Project.new(project_params)
     @project.user_id = current_user.id
 
     if @project.save
@@ -40,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to team_projects_path, notice: 'Project was successfully destroyed.'
+    redirect_to projects_path, notice: 'Project was successfully destroyed.'
   end
 
   private # This encapsulates these methods
@@ -51,6 +50,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :description, :due_date, :user_id, :team_id)
+      params.require(:project).permit(:name, :description, :due_date, :user_id, :task_id)
     end
 end

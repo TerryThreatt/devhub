@@ -4,20 +4,20 @@
 <% end %>
 
 <% content_for :content do %>
-    <% if !@projects.any? %>
-        <p><%= link_to "Create Project", new_project_path(@user) %></p>
-    <% else %>
-        <% @projects.each do |project| %>
-            <div class="card border-info mb-3">
-                <div class="card-body">
-                    Name:<H5 class="card-title"><%= link_to project.name, project_path(project) %></H5>
-                    Description:<p class="card-text"><%= project.description %><p>
-                    Due Date:<strong><%= project.due_date %></strong><br>
-                    <%= link_to 'Create Task', new_project_project_task_path(project) %>
-                </div>
+
+    <% @projects.each do |project| %>
+        <div class="card border-info mb-3">
+            <div class="card-body">
+                Name:<H5 class="card-title"><%= link_to project.name, project_path(project) %></H5>
+                Description:<p class="card-text"><%= project.description %><p>
+                Due Date:<strong><%= project.due_date %></strong><br>
+                <%= link_to 'Create Task', new_project_task_path(project) %>
             </div>
-        <% end %>
+        </div>
     <% end %>
 
-    <p><%= link_to "Create New Project", new_project_path %></p>
+    <br>
+    <br>
+    <p><%= link_to "Create New Project", new_user_project_path %></p>
+
 <% end %>

@@ -3,8 +3,11 @@
 <p><%= @project.description %></p>
 <strong><%= @project.due_date %></strong>
 <ul>
-<% @project.tasks.each do |task| %>
-    <li><%= @project.task.name %></li>
+<% @project.project_tasks.each do |pt| %>
+    <li><%= pt.name %></li>
+    <li><%= pt.description %></li>
+    <li><%= pt.name %></li>
+    Done: <%= checkbox_tag pt.done? %>
     <% end %>
 </ul>
 <% end %>
@@ -13,5 +16,6 @@
     <%= link_to 'Add Task', new_project_project_task_path(@project) %>
     <%= link_to 'Edit Project', edit_project_path(@project) %>
     <%= link_to 'Create New Project', new_project_path(@project) %>
+    <%= link_to 'Delete Project', project_path(@project), method: :delete %>
     <%= link_to 'Back', projects_path %>
 <% end %>
