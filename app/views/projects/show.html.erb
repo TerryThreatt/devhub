@@ -2,20 +2,26 @@
 <h1><%= @project.name %></h1>
 <p><%= @project.description %></p>
 <strong><%= @project.due_date %></strong>
-<ul>
-<% @project.project_tasks.each do |pt| %>
-    <li>Name:<%= pt.name %></li>
-    <li>Descrption<%= pt.description %></li>
-    <li>Due Date:<%= pt.due_date %></li>
-    Done: <%= check_box_tag pt.done? %>
-    <% end %>
-</ul>
-<% end %>
+
 
 <% content_for :content do %>
-    <%= link_to 'Add Task', new_user_project_project_task_path(@user, @project) %>
-    <%= link_to 'Edit Project', edit_user_project_path(@user, @project.user_id) %>
-    <%= link_to 'Create New Project', new_user_project_path(@project) %>
-    <%= link_to 'Delete Project', user_project_path(@project), method: :delete %>
-    <%= link_to 'Back', user_projects_path %>
+    <% @project.project_tasks.each do |pt| %>
+        <h1><%= link_to pt.name,  user_project_project_task_path(@user, @project, pt)%></h1>
+        <div class="form-group">
+            Name: <strong></strong>
+            Description: <strong><%= pt.description %></strong>
+            Due Date: <strong><%= pt.due_date %></strong>
+            Done: <%= check_box_tag pt.done? %>
+        </div>
+        <% end %>
+    <% end %>
+
+        <br>
+        <div class="form-group">
+            <%= link_to 'Add Task', new_user_project_project_task_path(@user, @project) %>
+            <%= link_to 'Edit Project', edit_user_project_path(@user, @project.user_id) %>
+            <%= link_to 'Create New Project', new_user_project_path(@project) %>
+            <%= link_to 'Delete Project', user_project_path(@project), method: :delete %>
+            <%= link_to 'Back', user_projects_path %>
+        </div>
 <% end %>

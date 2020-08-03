@@ -11,7 +11,7 @@
     </ul>
   <% end %>
 
-  <%= form_for @project_task, url: {method: :update } do |f| %>
+  <%= form_for @project_task, url: { action: "update" } do |f| %>
     <div class='form-group'>
           <strong><%= f.label :name %></strong>
           <%= f.text_field :name, class:"form-control" %><br>
