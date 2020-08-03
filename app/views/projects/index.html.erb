@@ -10,7 +10,7 @@
                     Name:<h5 class="card-title"><%= link_to project.name, user_project_path(@user, project) %></h5>
                     Description:<p class="card-text"><%= project.description %><p>
                     Due Date:<h5 class="card-text"><%= project.due_date %></h5>
-                    <%= link_to 'Create Task', new_project_task_path(@user, project) %>
+                    <%= link_to 'Create Task', new_user_project_project_task_path(@user, project) %>
                 </div>
             </div>
         <% end %>

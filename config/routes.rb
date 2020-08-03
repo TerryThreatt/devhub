@@ -8,11 +8,13 @@ Rails.application.routes.draw do
 
   # Nested Resources - users/projects
   resources :users, only: [:show] do
-    resources :projects
+    resources :projects do
+      resources :project_tasks
+    end
   end
 
   # Project Tasks
-  resources :project_tasks
+  resources :project_tasks, only: [:edit, :update]
 
   # Task
   resources :tasks

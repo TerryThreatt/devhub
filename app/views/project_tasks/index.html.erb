@@ -5,15 +5,15 @@
 
 <% content_for :content do %>
     <% if !@project_tasks.any? %>
-        <p><%= link_to "Create New Project Task", new_project_task_path(@user) %></p>
+        <p><%= link_to "Create New Project Task", new_user_project_project_task_path(@user) %></p>
     <% else %>
         <% @project_tasks.each do |project_task| %>
             <div class="card border-info mb-3">
                 <div class="card-body">
-                    Name:<H5 class="card-title"><%= link_to project_task.name, project_project_task_path(project_task) %></H5>
+                    Name:<H5 class="card-title"><%= link_to project_task.name, user_project_project_task_path(@user, @project, project_task) %></H5>
                     Description:<p class="card-text"><%= project_task.description %><p>
                     <strong><%= project_task.due_date %></strong>
-                    <%= link_to 'Project', project_path(project_task.project) %>
+                    <%= link_to 'Project', user_project_path(@user, project_task.project) %>
                 </div>
             </div>
         <% end %>

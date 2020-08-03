@@ -4,18 +4,18 @@
 <strong><%= @project.due_date %></strong>
 <ul>
 <% @project.project_tasks.each do |pt| %>
-    <li><%= pt.name %></li>
-    <li><%= pt.description %></li>
-    <li><%= pt.name %></li>
-    Done: <%= checkbox_tag pt.done? %>
+    <li>Name:<%= pt.name %></li>
+    <li>Descrption<%= pt.description %></li>
+    <li>Due Date:<%= pt.due_date %></li>
+    Done: <%= check_box_tag pt.done? %>
     <% end %>
 </ul>
 <% end %>
 
 <% content_for :content do %>
-    <%= link_to 'Add Task', new_project_project_task_path(@project) %>
-    <%= link_to 'Edit Project', edit_project_path(@project) %>
-    <%= link_to 'Create New Project', new_project_path(@project) %>
-    <%= link_to 'Delete Project', project_path(@project), method: :delete %>
-    <%= link_to 'Back', projects_path %>
+    <%= link_to 'Add Task', new_user_project_project_task_path(@user, @project) %>
+    <%= link_to 'Edit Project', edit_user_project_path(@user, @project.user_id) %>
+    <%= link_to 'Create New Project', new_user_project_path(@project) %>
+    <%= link_to 'Delete Project', user_project_path(@project), method: :delete %>
+    <%= link_to 'Back', user_projects_path %>
 <% end %>

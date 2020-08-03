@@ -6,28 +6,33 @@ class ProjectTasksController < ApplicationController
   def index
     @project_tasks = ProjectTask.all
     @user = current_user
+    @project = Project.find_by(id: params[:project_id])
   end
 
   def new
     @project_task = ProjectTask.new
     @project = Project.find_by(id: params[:project_id])
-    @project_task.build_task
+    @task = @project_task.build_task
+    @user = current_user
   end
 
   def create
     @project_task = ProjectTask.new(project_task_params)
-
+    @user = current_user
     if @project_task.save
-      redirect_to @project_task, notice: 'Project Task was successfully created.'
+      render :show, notice: 'Project Task was successfully created.'
     else
       render :new
     end
   end
 
   def show
+    @user = current_user
   end
 
   def edit
+    @user = current_user
+    @project = Project.find_by(id: params[:project_id])
   end
 
   def update
@@ -51,6 +56,6 @@ class ProjectTasksController < ApplicationController
     end
 
     def project_task_params
-      params.require(:project_task).permit(:name, :description, :due_date, user_attributes: [:id, :email ], task_attributes: [:id, :name, :description], project_attributes: [:id, :name ] )
+      params.require(:project_task).permit(:name, :description, :due_date, :user_id, :project_id, user_attributes: [:id, :email ], task_attributes: [:id, :name, :description, :users], project_attributes: [:id, :name ] )
     end
 end

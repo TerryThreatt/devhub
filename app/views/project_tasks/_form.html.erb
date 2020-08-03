@@ -1,26 +1,23 @@
+    <div class='form-group'>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.hidden_field :project_id, :value => @project.id %>
+      <strong><%= f.label :name %></strong>
+      <%= f.text_field :name, class:"form-control" %><br>
+      <strong><%= f.label :description %></strong>
+      <%= f.text_area :description, class:"form-control" %><br>
+      <strong><%= f.label :due_date %></strong>
+      <%= f.date_field :due_date, class:"form-control" %><br>
 
-    <strong><%= f.label :name %></strong>
-    <%= f.text_field :name, class:"form-control" %><br>
-    <strong><%= f.label :description %></strong>
-    <%= f.text_area :description, class:"form-control" %><br>
-    <strong><%= f.label :due_date %></strong>
-    <%= f.date_field :due_date, class:"form-control" %><br>
-    <strong><%= f.label "Select User:" %></strong>
-    <%= f.collection_select(:id, User.all, :id, :email, prompt: true) %>
-    <br>
-    <%= f.fields_for :task do |t| %>
-        <strong><%= t.label "Select Task:" %></strong>
-        <%= t.collection_select(:id, Task.all, :id, :name, prompt: true)%>
-        <br>
+    </div >
+    <div class='form-group'>
+      <%= f.fields_for :task do |t| %>
+          <strong><%= t.label "Task Name:" %></strong>
+        <%= t.text_field :name, class:"form-control" %><br>
+        <strong><%= t.label "Task Description:" %></strong>
+        <%= t.text_area :description, class:"form-control" %><br>
+    </div>
 
-        Create New Task:
-        <br>
-        <strong><%= f.label :name %></strong>
-        <%= t.text_field :name%>
-        <br>
-        <strong><%= f.label :description %></strong>
-         <%= t.text_area :description%>
-
-    <% end %>
 
   <%= f.submit class: "btn btn-primary" %>
+
+  <% end %>
