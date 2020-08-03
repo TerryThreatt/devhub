@@ -21,7 +21,7 @@ class ProjectTasksController < ApplicationController
     @user = current_user
     @project = Project.find_by(id: params[:project_id])
     if @project_task.save
-      redirect_to user_project_project_tasks_path(@user, @project), notice: 'Project Task was successfully created.'
+      redirect_to user_project_project_tasks_path(@user, @project, @project_task), notice: 'Project Task was successfully created.'
     else
       render :new
     end

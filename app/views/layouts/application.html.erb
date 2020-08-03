@@ -14,8 +14,13 @@
     <%= render partial: "shared/nav" %>
     <%= render partial: "shared/alerts" %>
 
-    <%= yield :header %>
-    <%= yield :content %>
-    <%= yield %>
+    <div class="container mt-5">
+      <%= yield :header %>
+      <div class="container mt-2">
+        <%= yield :content %>
+        <%= yield %>
+      </div>
+    </div>
+
   </body>
 </html>

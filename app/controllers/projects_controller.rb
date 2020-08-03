@@ -10,14 +10,15 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @user = current_user
   end
 
   def create
     @project = Project.new(project_params)
-    @project.user_id = current_user.id
+    @user = current_user
 
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      redirect_to user_project_path(@user, @project), notice: 'Project was successfully created.'
     else
       render :new
     end
@@ -28,11 +29,13 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = current_user
     if @project.update(project_params)
-       redirect_to @project, notice: 'Project was successfully updated.'
+       redirect_to user_project_path(@user, @project), notice: 'Project was successfully updated.'
     else
        render :edit
     end
@@ -52,6 +55,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :description, :due_date, :id, :user_id, :task_id, :project_id)
+      params.require(:project).permit(:name, :description, :due_date, :id, :user_id, :project_id)
     end
 end

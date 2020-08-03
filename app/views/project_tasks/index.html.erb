@@ -1,17 +1,16 @@
 <% content_for :header do %>
-    <h1><%= @user.email %></h1>
-    <h3>Project Tasks:</h3>
+    <h1>Project Tasks:</h1>
 <% end %>
 
 <% content_for :content do %>
-    <%= link_to "Create New Project Task", new_user_project_project_task_path(@user, @project) %>
+    <%= link_to "Create New Project Task", new_user_project_project_task_path(@user, @project, @project_task), class: 'btn btn-primary'  %>
         <% @project_tasks.each do |project_task| %>
             <div class="card border-info mb-3">
                 <div class="card-body">
-                    Name:<H5 class="card-title"><%= link_to project_task.name, user_project_project_task_path(@user, @project, project_task) %></H5>
-                    Description:<p class="card-text"><%= project_task.description %><p>
-                    <strong><%= project_task.due_date %></strong>
-                    <%= link_to 'Project', user_project_path(@user, project_task) %>
+                    <h3>Name:<%= link_to project_task.name, user_project_project_task_path(@user, @project, project_task), class: 'btn btn-primary' %></h3>
+                    <p>Description:<%= project_task.description, class: 'btn btn-primary'  %></p>
+                    <strong>Due:<%= project_task.due_date %></strong>
+                    <%= link_to 'Project', user_project_path(@user, @project), class: 'btn btn-primary'  %>
                 </div>
             </div>
         <% end %>

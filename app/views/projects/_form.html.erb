@@ -1,5 +1,7 @@
 
-    <div>
+    <div class = "container">
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    <%= f.hidden_field :prject_id, :value => @project.id %>
     <strong><%= f.label :name %></strong>
     <%= f.text_field :name, class:"form-control" %><br>
     <strong><%= f.label :description %></strong>

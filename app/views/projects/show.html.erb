@@ -1,27 +1,34 @@
 <% content_for :header do %>
-<h1><%= @project.name %></h1>
-<p><%= @project.description %></p>
-<strong><%= @project.due_date %></strong>
+    <div class="text-center">
+        <h1><%= link_to @project.name, user_project_path(@user, @project) %></h1>
+        <p>Description: <%= @project.description %></p>
+        <strong>Due:<%= @project.due_date %></strong>
+    </div>
 
+    <div class="text-center mt-4">
+            <%= link_to 'Add New Task', new_user_project_project_task_path(@user, @project), class: 'btn btn-primary' %>
+    </div>
 
 <% content_for :content do %>
     <% @project.project_tasks.each do |pt| %>
-        <h1><%= link_to pt.name,  user_project_project_task_path(@user, @project, pt)%></h1>
-        <div class="form-group">
-            Name: <strong></strong>
-            Description: <strong><%= pt.description %></strong>
-            Due Date: <strong><%= pt.due_date %></strong>
-            Done: <%= check_box_tag pt.done? %>
+        <div class="card border-info mb-3">
+            <div class="card-body text-center">
+                <h3><%= link_to pt.name,  user_project_project_task_path(@user, @project, pt)%></h3>
+                Description: <strong><%= pt.description %></strong><br>
+                Due Date: <strong><%= pt.due_date %></strong><br>
+                Done: <%= check_box_tag pt.done? %><br>
+                <%= link_to 'Delete Task', project_task_path(pt), method: :delete , class: 'btn btn-primary'%>
+            </div>
         </div>
         <% end %>
     <% end %>
-
-        <br>
-        <div class="form-group">
-            <%= link_to 'Add Task', new_user_project_project_task_path(@user, @project) %>
-            <%= link_to 'Edit Project', edit_user_project_path(@user, @project) %>
-            <%= link_to 'Create New Project', new_user_project_path(@project) %>
-            <%= link_to 'Delete Project', user_project_path(@project), method: :delete %>
-            <%= link_to 'Back', user_projects_path %>
+    <% end %>
+        <div class="text-center mt-4">
+            <%= link_to 'Add New Task', new_user_project_project_task_path(@user, @project), class: 'btn btn-primary' %>
         </div>
-<% end %>
+        <br>
+        <div class="form-group mt-2 text-center">
+            <%= link_to 'Edit Project', edit_user_project_path(@user, @project), class: 'btn btn-primary' %>
+            <%= link_to 'Delete Project', user_project_path(@project), method: :delete , class: 'btn btn-primary'%>
+            <%= link_to 'Back', :back , class: 'btn btn-primary'%>
+        </div>

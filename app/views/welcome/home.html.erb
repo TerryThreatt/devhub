@@ -1,6 +1,9 @@
 <% content_for :content %>
-<h1>Welcome to DevHub</h1>
-<p>Your one-stop place for project management for development teams.</p>
 
-<%= link_to 'Signup',  new_user_registration_path %>
-<%= link_to 'Login', user_session_path %>
+    <h1>Welcome to DevHub</h1>
+    <p>Your one-stop place for project management for development teams.</p>
+
+    <div class="mx-auto">
+        <%= link_to 'Signup',  new_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to 'Login', user_session_path, class: "btn btn-primary" %>
+    </div>

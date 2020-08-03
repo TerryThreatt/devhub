@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :content do %>
-  <%= form_for :project do |form| %>
+  <%= form_for [@user, @project] do |form| %>
     <%= render partial: "form", locals: {f: form} %>
   <% end %>
 <% end %>
