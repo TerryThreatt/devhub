@@ -8,16 +8,10 @@ class ProjectTask < ApplicationRecord
   # Attributes
   accepts_nested_attributes_for :task, :project
   # Scope
-  scope :asc, -> { order(create_at: :asc ) }
-  scope :desc, -> { order(create_at: :desc ) }
+  scope :recent, -> { order(created_at: :desc) }
+  scope :due_soon, -> { order(due_date: :asc) }
+  scope :done, -> { where(done?: :true ) }
 
-  # def self.done_count
-  #     self.where(done?: 'true').count
-  # end
-
-  # def self.done_group
-  #     self.group(done?: 'true')
-  # end
 
   # def project_attributes=(project_params)
   #   attributes.values.each do |v|

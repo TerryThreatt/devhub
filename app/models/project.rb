@@ -6,6 +6,9 @@ class Project < ApplicationRecord
   has_many :tasks, through: :project_tasks
   # Validations
   validates :name, :due_date, presence: true
+
+  
+
   # Attributes
 #   accepts_nested_attributes_for :user, reject_if: proc { |attributes|
 #     attributes[:email].blank? }
@@ -23,6 +26,6 @@ class Project < ApplicationRecord
 
 #   def project_tasks_attributes=(attributes)
 #   end
-# end 
+# end
 
 end
