@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    @projects = current_user.projects
+    @projects = Project.all
     @user = current_user
   end
 
@@ -55,6 +55,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :description, :due_date, :id, :user_id, :project_id)
+      params.require(:project).permit(:name, :description, :due_date, :id, :user_id)
     end
 end

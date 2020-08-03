@@ -33,12 +33,15 @@ class ProjectTasksController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @project = Project.find_by(id: params[:project_id])
   end
 
   def update
+    @user = current_user
+    @project = Project.find_by(id: params[:project_id])
     if @project_task.update(project_task_params)
-      byebug
-      redirect_to user_project_project_task_path(current_user, @project_task), notice: 'Project Task was successfully updated.'
+      redirect_to user_project_project_task_path(@user, @project, @project_task), notice: 'Project Task was successfully updated.'
    else
       render :edit
    end
@@ -48,7 +51,7 @@ class ProjectTasksController < ApplicationController
     @user = current_user
     @project = Project.find_by(id: params[:project_id])
     @project_task.destroy
-    redirect_to user_project_project_tasks_path(@user, @project), notice: 'Project Task was successfully destroyed.'
+    redirect_to user_projects_path(@user, @project), notice: 'Project Task was successfully destroyed.'
   end
 
   private # This encapsulates these methods
@@ -59,6 +62,6 @@ class ProjectTasksController < ApplicationController
     end
 
     def project_task_params
-      params.require(:project_task).permit(:name, :description, :due_date, :user_id, :project_id, user_attributes: [:id, :email ], task_attributes: [:id, :name, :description, :users], project_attributes: [:id, :name ] )
+      params.require(:project_task).permit(:id, :name, :description, :due_date, :user_id, :project_id, user_attributes: [:id, :email ], task_attributes: [:id, :name, :description, :users], project_attributes: [:id, :name ] )
     end
 end

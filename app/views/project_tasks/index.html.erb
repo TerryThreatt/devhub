@@ -1,18 +1,21 @@
 <% content_for :header do %>
-    <h1>Project Tasks:</h1>
+    <div class="container text-center">
+        <h1>Project Tasks:</h1>
+    </div>
 <% end %>
 
 <% content_for :content do %>
-    <%= link_to "Create New Project Task", new_user_project_project_task_path(@user, @project, @project_task), class: 'btn btn-primary'  %>
-        <% @project_tasks.each do |project_task| %>
-            <div class="card border-info mb-3">
-                <div class="card-body">
-                    <h3>Name:<%= link_to project_task.name, user_project_project_task_path(@user, @project, project_task), class: 'btn btn-primary' %></h3>
-                    <p>Description:<%= project_task.description, class: 'btn btn-primary'  %></p>
-                    <strong>Due:<%= project_task.due_date %></strong>
-                    <%= link_to 'Project', user_project_path(@user, @project), class: 'btn btn-primary'  %>
+    <div class="container text-center mb-3">
+        <%= link_to "Create New Task", new_user_project_project_task_path(@user, @project, @project_task), class: 'btn btn-primary'  %>
+            <% @project_tasks.each do |project_task| %>
+                <div class="card border-info mb-3 mt-3">
+                    <div class="card-body">
+                        <h3><%= link_to project_task.name, user_project_project_task_path(@user, @project, project_task)%></h3>
+                        <p>Description:<br> <%= project_task.description %></p>
+                        <strong>Due:<br><%= project_task.due_date %></strong><br>
+                        <%= link_to 'Back to Project', user_project_path(@user, @project), class: 'btn btn-primary'  %>
+                    </div>
                 </div>
-            </div>
-        <% end %>
-
+            <% end %>
+    </div>
 <% end %>

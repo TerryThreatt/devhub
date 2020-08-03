@@ -17,18 +17,14 @@
                 Description: <strong><%= pt.description %></strong><br>
                 Due Date: <strong><%= pt.due_date %></strong><br>
                 Done: <%= check_box_tag pt.done? %><br>
-                <%= link_to 'Delete Task', project_task_path(pt), method: :delete , class: 'btn btn-primary'%>
+                <%= link_to 'Delete Task', user_project_project_task_path(@user, @project, pt), method: :delete, class: 'btn btn-primary' %>
             </div>
         </div>
         <% end %>
     <% end %>
     <% end %>
-        <div class="text-center mt-4">
-            <%= link_to 'Add New Task', new_user_project_project_task_path(@user, @project), class: 'btn btn-primary' %>
-        </div>
-        <br>
         <div class="form-group mt-2 text-center">
             <%= link_to 'Edit Project', edit_user_project_path(@user, @project), class: 'btn btn-primary' %>
-            <%= link_to 'Delete Project', user_project_path(@project), method: :delete , class: 'btn btn-primary'%>
+            <%= link_to 'Delete Project', user_project_path(@user, @project), method: :delete , class: 'btn btn-primary'%>
             <%= link_to 'Back', :back , class: 'btn btn-primary'%>
         </div>

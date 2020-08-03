@@ -11,7 +11,7 @@
     </ul>
   <% end %>
 
-  <%= form_for @project_task do |f| %>
+  <%= form_for [@user, @project, @project_task] do |f| %>
     <div class='form-group'>
           <strong><%= f.label :name %></strong>
           <%= f.text_field :name, class:"form-control" %><br>
