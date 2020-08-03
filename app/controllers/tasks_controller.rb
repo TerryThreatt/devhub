@@ -39,9 +39,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @project = current_user.projects.find_by(project_id = current_user.id)
+    @user = current_user
+    @project = Project.find_by(id: params[:project_id])
     @task.destroy
-    redirect_to project_path(@project), notice: 'Task was successfully destroyed.'
+    redirect_to project_path(@user, @project), notice: 'Task was successfully destroyed.'
   end
 
   private # This encapsulates these methods

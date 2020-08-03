@@ -21,7 +21,7 @@ class ProjectTasksController < ApplicationController
     @user = current_user
     @project = Project.find_by(id: params[:project_id])
     if @project_task.save
-      redirect_to user_project_project_task_path(@user, @project,@project_task), notice: 'Project Task was successfully created.'
+      redirect_to user_project_project_tasks_path(@user, @project), notice: 'Project Task was successfully created.'
     else
       render :new
     end
@@ -45,8 +45,10 @@ class ProjectTasksController < ApplicationController
   end
 
   def destroy
+    @user = current_user
+    @project = Project.find_by(id: params[:project_id])
     @project_task.destroy
-    redirect_to project_project_tasks_path, notice: 'Project Task was successfully destroyed.'
+    redirect_to user_project_project_tasks_path(@user, @project), notice: 'Project Task was successfully destroyed.'
   end
 
   private # This encapsulates these methods
