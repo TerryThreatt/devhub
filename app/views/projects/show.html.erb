@@ -19,7 +19,7 @@
         <br>
         <div class="form-group">
             <%= link_to 'Add Task', new_user_project_project_task_path(@user, @project) %>
-            <%= link_to 'Edit Project', edit_user_project_path(@user, @project.user_id) %>
+            <%= link_to 'Edit Project', edit_user_project_path(@user, @project) %>
             <%= link_to 'Create New Project', new_user_project_path(@project) %>
             <%= link_to 'Delete Project', user_project_path(@project), method: :delete %>
             <%= link_to 'Back', user_projects_path %>

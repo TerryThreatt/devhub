@@ -19,8 +19,9 @@ class ProjectTasksController < ApplicationController
   def create
     @project_task = ProjectTask.new(project_task_params)
     @user = current_user
+    @project = Project.find_by(id: params[:project_id])
     if @project_task.save
-      render :show, notice: 'Project Task was successfully created.'
+      redirect_to user_project_project_task_path(@user, @project,@project_task), notice: 'Project Task was successfully created.'
     else
       render :new
     end
@@ -28,16 +29,16 @@ class ProjectTasksController < ApplicationController
 
   def show
     @user = current_user
+    @project = Project.find_by(id: params[:project_id])
   end
 
   def edit
-    @user = current_user
-    @project = Project.find_by(id: params[:project_id])
   end
 
   def update
     if @project_task.update(project_task_params)
-      redirect_to @project_task, notice: 'Project Task was successfully updated.'
+      byebug
+      redirect_to user_project_project_task_path(current_user, @project_task), notice: 'Project Task was successfully updated.'
    else
       render :edit
    end

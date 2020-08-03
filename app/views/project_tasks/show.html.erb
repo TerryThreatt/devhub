@@ -7,7 +7,7 @@
 
 <% content_for :content do %>
   <%= link_to 'Add Project Task', new_user_project_project_task_path(@user, @project_task) %>
-  <%= link_to 'Edit Project Task', edit_user_project_project_task_path(@user, @project_task) %>
+  <%= link_to 'Edit Project Task', edit_project_task_path(@user, @project_task) %>
   <%= link_to 'Create New Project', new_user_project_path(@user) %>
   <%= link_to 'Back', user_project_project_tasks_path(@user) %>
 <% end %>
