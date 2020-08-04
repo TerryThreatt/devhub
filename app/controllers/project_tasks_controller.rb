@@ -54,6 +54,10 @@ class ProjectTasksController < ApplicationController
     redirect_to user_projects_path(@user, @project), notice: 'Project Task was successfully destroyed.'
   end
 
+  def recent
+    @recent = ProjectTask.recent
+  end
+  
   private # This encapsulates these methods
 
   # Strong params

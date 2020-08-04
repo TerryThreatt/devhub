@@ -1,0 +1,21 @@
+<% content_for :header do %>
+  <h1>Most Recent Project Tasks:</h1>
+<% end %>
+
+<% content_for :content do %>
+    <% if @recent.any? %>
+        <ol>
+            <% @recent.each do |r| %>
+                <li>
+                    <strong>Name:</strong> <%= r.name %><br>
+                    <strong>Description:</strong> <%= r.description %><br>
+                    <strong>Created:</strong> <%= r.created_at.to_date %>
+                </li>
+            <% end %>
+        </ol>
+    <% else %>
+        <h1>No Recent Tasks</h1>
+    <% end %>
+
+    <%= link_to 'Back', :back%>
+<% end %>

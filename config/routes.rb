@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   # Task
   resources :tasks
 
+  # Scope
+  get '/project_tasks/recent', to: 'project_tasks#recent'
+
 end
