@@ -1,6 +1,6 @@
 # DevHub
 
- The application helps you keep track of tasks for projects. It will allow a user to be selected for each task and coordination completion of important projects.
+ The application helps you keep track of tasks for projects. It will allow a multiple users to create projects and tasks to manage for productivity. 
 
 ## Getting started
 
