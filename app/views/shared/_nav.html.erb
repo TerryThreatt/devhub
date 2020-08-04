@@ -1,7 +1,7 @@
 <nav class="navbar navbar-menu navbar-dark bg-dark">
       <div class="container">
         <div class="navbar-header navbar-dark">
-          <%= link_to 'DevHub', root_path, class: 'navbar-brand' %>
+          <h1><strong><%= link_to 'DevHub', root_path, class: 'navbar-brand mt-1' %></strong></h1>
         </div>
         <% if user_signed_in? %>
               <%= link_to 'Projects', user_projects_path(current_user) %>
@@ -21,8 +21,10 @@
                 </ul>
               </li>
             <% else %>
-              <li><%= link_to 'Log In', new_user_session_path %></li>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <div class='form-group mb-1'>
+                <%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary' %>
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
+              </div>
             <% end %>
           </ul>
         </div>
