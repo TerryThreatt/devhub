@@ -58,6 +58,11 @@ class ProjectTasksController < ApplicationController
     @recent = ProjectTask.recent
   end
 
+  def user_project_tasks
+    @user = User.find_by(id: params[:id])
+    @project_tasks = @user.project_tasks
+  end
+
   private # This encapsulates these methods
 
   # Strong params

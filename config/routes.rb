@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   # Scope
   get '/project_tasks/recent', to: 'project_tasks#recent'
 
+  get '/users/:id/project_tasks', to: 'project_tasks#user_project_tasks', as: :user_project_tasks
+
 end
