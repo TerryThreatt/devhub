@@ -57,7 +57,7 @@ class ProjectTasksController < ApplicationController
   def recent
     @recent = ProjectTask.recent
   end
-  
+
   private # This encapsulates these methods
 
   # Strong params
