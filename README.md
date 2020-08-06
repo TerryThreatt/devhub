@@ -1,5 +1,7 @@
 # DevHub
 
+![DevHub](https://drive.google.com/file/d/1ejSo4PwtlBuByQI5oJMBVcroDuto-vNo/view?usp=sharing)
+
  The application helps you keep track of tasks for projects. It will allow a multiple users to create projects and tasks to manage for productivity. 
 
 ## Getting started
